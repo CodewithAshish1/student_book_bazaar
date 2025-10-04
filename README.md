@@ -55,7 +55,7 @@ Quick Start
 
 Clone the repository
 
-bash   git clone https://github.com/CodewithAshish/student-book-bazaar.git
+bash   git clone https://github.com/CodewithAshish1/student_book_bazaar?tab=readme-ov-file
    cd student-book-bazaar
 
 Open the project
