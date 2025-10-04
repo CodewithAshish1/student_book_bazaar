@@ -55,7 +55,7 @@ Quick Start
 
 Clone the repository
 
-bash   git clone https://github.com/yourusername/student-book-bazaar.git
+bash   git clone https://github.com/CodewithAshish/student-book-bazaar.git
    cd student-book-bazaar
 
 Open the project
@@ -189,7 +189,7 @@ No backend - data is stored locally only
 This project is licensed under the MIT License - see the LICENSE file for details.
 MIT License
 
-Copyright (c) 2025 Your Name
+Copyright (c) 2025 ashish singh
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -201,11 +201,11 @@ furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 👨‍💻 Author
-Your Name
+ashish singh
 
-GitHub: @yourusername
-LinkedIn: Your Name
-Email: your.email@example.com
+GitHub: @CodewithAshish
+LinkedIn: 
+Email: ashish241438@gmail.com
 
 🙏 Acknowledgments
 
