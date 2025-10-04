@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Book Bazaar - Buy & Sell Second-Hand Books</title>
+    <link rel="stylesheet" href="book_bazaar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <i class="fas fa-book-reader"></i>
+                    <span>Book Bazaar</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><a href="#" class="nav-link" id="wishlistBtn">
+                        <i class="fas fa-heart"></i> Wishlist <span class="badge" id="wishlistCount">0</span>
+                    </a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="btn-icon" id="darkModeToggle" title="Toggle Dark Mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="btn-primary" id="postAdBtn">
+                        <i class="fas fa-plus"></i> Post Ad
+                    </button>
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#home" class="mobile-link">Home</a></li>
+            <li><a href="#about" class="mobile-link">About</a></li>
+            <li><a href="#contact" class="mobile-link">Contact</a></li>
+            <li><a href="#" class="mobile-link" id="mobileWishlistBtn">Wishlist</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Buy & Sell Second-Hand Books</h1>
+                <p class="hero-subtitle">Your campus marketplace for affordable textbooks and novels</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-book"></i>
+                        <span id="totalBooks">0</span>
+                        <p>Books Listed</p>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-users"></i>
+                        <span>500+</span>
+                        <p>Students</p>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-handshake"></i>
+                        <span>1000+</span>
+                        <p>Deals</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search and Filter Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-wrapper">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search by title or author...">
+                </div>
+                <div class="filter-controls">
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="">All Categories</option>
+                        <option value="Engineering">Engineering</option>
+                        <option value="Science">Science</option>
+                        <option value="Commerce">Commerce</option>
+                        <option value="Arts">Arts</option>
+                        <option value="Novels">Novels</option>
+                        <option value="Medical">Medical</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <select id="conditionFilter" class="filter-select">
+                        <option value="">All Conditions</option>
+                        <option value="New">New</option>
+                        <option value="Like New">Like New</option>
+                        <option value="Good">Good</option>
+                        <option value="Fair">Fair</option>
+                    </select>
+                    <select id="sortFilter" class="filter-select">
+                        <option value="latest">Latest First</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                    </select>
+                    <div class="price-range">
+                        <input type="number" id="minPrice" placeholder="Min ₹" class="price-input">
+                        <span>-</span>
+                        <input type="number" id="maxPrice" placeholder="Max ₹" class="price-input">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Books Listing Section -->
+    <section class="listings-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Available Books</h2>
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="grid"><i class="fas fa-th"></i></button>
+                    <button class="view-btn" data-view="list"><i class="fas fa-list"></i></button>
+                </div>
+            </div>
+            <div class="books-grid" id="booksContainer">
+                <!-- Books will be dynamically inserted here -->
+            </div>
+            <div class="no-results" id="noResults" style="display: none;">
+                <i class="fas fa-search"></i>
+                <p>No books found matching your criteria</p>
+            </div>
+            <div class="load-more-wrapper" id="loadMoreWrapper" style="display: none;">
+                <button class="btn-secondary" id="loadMoreBtn">
+                    <i class="fas fa-chevron-down"></i> Load More
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2>About Student Book Bazaar</h2>
+            <div class="about-content">
+                <div class="about-card">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Our Mission</h3>
+                    <p>To make education more affordable by connecting students who want to buy and sell second-hand books.</p>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Safe Trading</h3>
+                    <p>Direct contact between buyers and sellers ensures transparency and trust in every transaction.</p>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Eco-Friendly</h3>
+                    <p>Reduce waste by giving books a second life and promoting sustainable education practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>support@bookbazaar.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+91 98765 43210</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>College Campus, India</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <input type="text" placeholder="Your Name" class="form-input">
+                    <input type="email" placeholder="Your Email" class="form-input">
+                    <textarea placeholder="Your Message" rows="4" class="form-input"></textarea>
+                    <button class="btn-primary">Send Message</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Book Bazaar</h3>
+                    <p>Your trusted platform for buying and selling second-hand books.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="#">Engineering</a></li>
+                        <li><a href="#">Science</a></li>
+                        <li><a href="#">Commerce</a></li>
+                        <li><a href="#">Novels</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for updates</p>
+                    <div class="newsletter">
+                        <input type="email" placeholder="Your email">
+                        <button><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Student Book Bazaar. All rights reserved .</p>
+                 <p> Made by Ashish.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Post Ad Modal -->
+    <div class="modal" id="postAdModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Post Your Book Ad</h3>
+                <button class="close-btn" id="closeModal">&times;</button>
+            </div>
+            <form id="bookForm">
+                <div class="form-group">
+                    <label>Book Title *</label>
+                    <input type="text" id="bookTitle" required class="form-input">
+                </div>
+                <div class="form-group">
+                    <label>Author *</label>
+                    <input type="text" id="bookAuthor" required class="form-input">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Category *</label>
+                        <select id="bookCategory" required class="form-input">
+                            <option value="">Select Category</option>
+                            <option value="Engineering">Engineering</option>
+                            <option value="Science">Science</option>
+                            <option value="Commerce">Commerce</option>
+                            <option value="Arts">Arts</option>
+                            <option value="Novels">Novels</option>
+                            <option value="Medical">Medical</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Condition *</label>
+                        <select id="bookCondition" required class="form-input">
+                            <option value="">Select Condition</option>
+                            <option value="New">New</option>
+                            <option value="Like New">Like New</option>
+                            <option value="Good">Good</option>
+                            <option value="Fair">Fair</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Price (₹) *</label>
+                    <input type="number" id="bookPrice" required class="form-input" min="0">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="bookDescription" rows="3" class="form-input"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Contact Number *</label>
+                    <input type="tel" id="bookContact" required class="form-input">
+                </div>
+                <div class="form-group">
+                    <label>Image URL</label>
+                    <input type="url" id="bookImage" class="form-input" placeholder="https://example.com/image.jpg">
+                    <small>Paste an image URL or leave blank for default</small>
+                </div>
+                <button type="submit" class="btn-primary btn-block">Post Ad</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Book Detail Modal -->
+    <div class="modal" id="bookDetailModal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3>Book Details</h3>
+                <button class="close-btn" id="closeDetailModal">&times;</button>
+            </div>
+            <div id="bookDetailContent">
+                <!-- Book details will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Wishlist Modal -->
+    <div class="modal" id="wishlistModal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3><i class="fas fa-heart"></i> My Wishlist</h3>
+                <button class="close-btn" id="closeWishlistModal">&times;</button>
+            </div>
+            <div id="wishlistContent">
+                <!-- Wishlist items will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h3>Confirm Action</h3>
+                <button class="close-btn" id="closeConfirmModal">&times;</button>
+            </div>
+            <div class="confirm-content">
+                <p id="confirmMessage">Are you sure you want to proceed?</p>
+                <div class="confirm-actions">
+                    <button class="btn-secondary" id="cancelConfirm">Cancel</button>
+                    <button class="btn-danger" id="confirmAction">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="book_bazaar.js"></script>
+</body>
+</html>
